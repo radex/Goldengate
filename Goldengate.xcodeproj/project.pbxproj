@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C75B8021A17A61000C084FA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C75B8011A17A61000C084FA /* MainMenu.xib */; };
 		6EFB478B1A1787DE00B5B512 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB478A1A1787DE00B5B512 /* AppDelegate.swift */; };
 		6EFB478D1A1787DE00B5B512 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB478C1A1787DE00B5B512 /* ViewController.swift */; };
 		6EFB478F1A1787DE00B5B512 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB478E1A1787DE00B5B512 /* Images.xcassets */; };
-		6EFB47921A1787DE00B5B512 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB47901A1787DE00B5B512 /* Main.storyboard */; };
 		6EFB479E1A1787DE00B5B512 /* GoldengateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB479D1A1787DE00B5B512 /* GoldengateTests.swift */; };
 		6EFB47AA1A178C6500B5B512 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47A71A178C6500B5B512 /* Plugin.swift */; };
 		6EFB47AB1A178C6500B5B512 /* Goldengate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47A81A178C6500B5B512 /* Goldengate.swift */; };
@@ -28,12 +28,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C75B8011A17A61000C084FA /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		6EFB47851A1787DE00B5B512 /* Goldengate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goldengate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFB47891A1787DE00B5B512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EFB478A1A1787DE00B5B512 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EFB478C1A1787DE00B5B512 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6EFB478E1A1787DE00B5B512 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6EFB47911A1787DE00B5B512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6EFB47971A1787DE00B5B512 /* GoldengateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoldengateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFB479C1A1787DE00B5B512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EFB479D1A1787DE00B5B512 /* GoldengateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldengateTests.swift; sourceTree = "<group>"; };
@@ -81,13 +81,13 @@
 		6EFB47871A1787DE00B5B512 /* Goldengate */ = {
 			isa = PBXGroup;
 			children = (
+				0C75B8011A17A61000C084FA /* MainMenu.xib */,
 				6EFB47A71A178C6500B5B512 /* Plugin.swift */,
 				6EFB47A81A178C6500B5B512 /* Goldengate.swift */,
 				6EFB47A91A178C6500B5B512 /* TestPlugins.swift */,
 				6EFB478A1A1787DE00B5B512 /* AppDelegate.swift */,
 				6EFB478C1A1787DE00B5B512 /* ViewController.swift */,
 				6EFB478E1A1787DE00B5B512 /* Images.xcassets */,
-				6EFB47901A1787DE00B5B512 /* Main.storyboard */,
 				6EFB47881A1787DE00B5B512 /* Supporting Files */,
 			);
 			path = Goldengate;
@@ -199,7 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EFB478F1A1787DE00B5B512 /* Images.xcassets in Resources */,
-				6EFB47921A1787DE00B5B512 /* Main.storyboard in Resources */,
+				0C75B8021A17A61000C084FA /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,17 +242,6 @@
 			targetProxy = 6EFB47981A1787DE00B5B512 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6EFB47901A1787DE00B5B512 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6EFB47911A1787DE00B5B512 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6EFB479F1A1787DE00B5B512 /* Debug */ = {
