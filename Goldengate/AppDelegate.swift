@@ -15,6 +15,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         preferences.enableInspector()
         config.preferences = preferences
         
+        let userContentController = WKUserContentController()
+        userContentController.addScriptMessageHandler(GoldengateMessageHandler(), name: "goldengate")
+        config.userContentController = userContentController
+        
         webView = WKWebView(frame: contentView.bounds, configuration: config)
         webView.autoresizingMask = .ViewWidthSizable | .ViewHeightSizable
         contentView.addSubview(webView)
@@ -23,5 +27,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         webView.loadRequest(request)
         
         play()
+    }
+}
+
+class GoldengateMessageHandler: NSObject, WKScriptMessageHandler {
+    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+        println(message)
     }
 }
