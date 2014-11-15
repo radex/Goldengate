@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+coffee -cwo public/build src

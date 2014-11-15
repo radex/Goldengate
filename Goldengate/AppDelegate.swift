@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         webView.autoresizingMask = .ViewWidthSizable | .ViewHeightSizable
         contentView.addSubview(webView)
         
-        let request = NSURLRequest(URL: NSURL(string: "http://pma.dev")!)
+        let request = NSURLRequest(URL: NSURL(string: "http://goldengate.dev")!)
         webView.loadRequest(request)
         
         play()
