@@ -32,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 class GoldengateMessageHandler: NSObject, WKScriptMessageHandler {
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+        let message = message.body as NSDictionary
         println(message)
     }
 }
