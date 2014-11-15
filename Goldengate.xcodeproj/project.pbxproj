@@ -15,6 +15,7 @@
 		6EFB47AA1A178C6500B5B512 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47A71A178C6500B5B512 /* Plugin.swift */; };
 		6EFB47AB1A178C6500B5B512 /* Goldengate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47A81A178C6500B5B512 /* Goldengate.swift */; };
 		6EFB47AC1A178C6500B5B512 /* TestPlugins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47A91A178C6500B5B512 /* TestPlugins.swift */; };
+		6EFB47AF1A17AC0700B5B512 /* GoldengatePlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47AE1A17AC0700B5B512 /* GoldengatePlayground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		6EFB47A71A178C6500B5B512 /* Plugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
 		6EFB47A81A178C6500B5B512 /* Goldengate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goldengate.swift; sourceTree = "<group>"; };
 		6EFB47A91A178C6500B5B512 /* TestPlugins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlugins.swift; sourceTree = "<group>"; };
+		6EFB47AE1A17AC0700B5B512 /* GoldengatePlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldengatePlayground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				6EFB478C1A1787DE00B5B512 /* ViewController.swift */,
 				6EFB478E1A1787DE00B5B512 /* Images.xcassets */,
 				6EFB47881A1787DE00B5B512 /* Supporting Files */,
+				6EFB47AE1A17AC0700B5B512 /* GoldengatePlayground.swift */,
 			);
 			path = Goldengate;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EFB47AF1A17AC0700B5B512 /* GoldengatePlayground.swift in Sources */,
 				6EFB47AA1A178C6500B5B512 /* Plugin.swift in Sources */,
 				6EFB47AB1A178C6500B5B512 /* Goldengate.swift in Sources */,
 				6EFB478D1A1787DE00B5B512 /* ViewController.swift in Sources */,

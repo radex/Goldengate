@@ -10,10 +10,18 @@ extension Goldengate {
         
         public typealias Arguments = [AnyObject!]
         
-        enum Result {
+        enum Result: Printable {
             case None
             case Value(AnyObject?)
             case Promise(Plugin.Promise)
+            
+            var description: String {
+                switch self {
+                case .None: return "No result"
+                case .Value(let value): return "Value: \(value)"
+                case .Promise(_): return "Promise of a future value"
+                }
+            }
         }
         
         // MARK: Promises
@@ -29,6 +37,7 @@ extension Goldengate {
             
             public func resolve(value: AnyObject!) {
                 NSOperationQueue.mainQueue().addOperationWithBlock {
+                    println("Resolving a promise")
                     self.promise.onResolved?(value)
                     ()
                 }
@@ -36,6 +45,7 @@ extension Goldengate {
             
             public func reject(reason: AnyObject!) {
                 NSOperationQueue.mainQueue().addOperationWithBlock {
+                    println("Rejecting a promise")
                     self.promise.onRejected?(reason)
                     ()
                 }
