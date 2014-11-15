@@ -24,6 +24,7 @@ final class ReadLaterPlugin: Goldengate.Plugin {
     }
     
     class func async() -> Promise {
-        return Promise()
+        let d = Deferred()
+        return d.promise
     }
 }

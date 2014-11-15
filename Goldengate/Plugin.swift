@@ -1,16 +1,45 @@
+import Foundation
+
 // Arguments and results
 
 extension Goldengate {
     public class Plugin {
         private init() { }
         
+        // MARK: Input / output
+        
         public typealias Arguments = [AnyObject!]
-        public class Promise { }
         
         enum Result {
             case None
             case Value(AnyObject?)
             case Promise(Plugin.Promise)
+        }
+        
+        // MARK: Promises
+        
+        public class Promise {
+            private init() {}
+            var onResolved: (AnyObject! -> Void)?
+            var onRejected: (AnyObject! -> Void)?
+        }
+        
+        public class Deferred {
+            private(set) var promise = Promise()
+            
+            public func resolve(value: AnyObject!) {
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.promise.onResolved?(value)
+                    ()
+                }
+            }
+            
+            public func reject(reason: AnyObject!) {
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.promise.onRejected?(reason)
+                    ()
+                }
+            }
         }
         
         // MARK: Routing
