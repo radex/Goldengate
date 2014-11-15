@@ -28,6 +28,14 @@ extension Goldengate {
         
         public class Promise {
             private init() {}
+            
+            enum State {
+                case Pending
+                case Resolved(AnyObject!)
+                case Rejected(AnyObject!)
+            }
+            
+            private(set) var state: State = .Pending
             var onResolved: (AnyObject! -> Void)?
             var onRejected: (AnyObject! -> Void)?
         }
@@ -37,17 +45,27 @@ extension Goldengate {
             
             public func resolve(value: AnyObject!) {
                 NSOperationQueue.mainQueue().addOperationWithBlock {
-                    println("Resolving a promise")
-                    self.promise.onResolved?(value)
-                    ()
+                    switch self.promise.state {
+                    case .Pending:
+                        println("Resolving a promise")
+                        self.promise.state = .Resolved(value)
+                        self.promise.onResolved?(value)
+                    default:
+                        println("Can't resolve; promise already fulfilled!")
+                    }
                 }
             }
             
             public func reject(reason: AnyObject!) {
                 NSOperationQueue.mainQueue().addOperationWithBlock {
-                    println("Rejecting a promise")
-                    self.promise.onRejected?(reason)
-                    ()
+                    switch self.promise.state {
+                    case .Pending:
+                        println("Rejecting a promise")
+                        self.promise.state = .Rejected(reason)
+                        self.promise.onRejected?(reason)
+                    default:
+                        println("Can't reject; promise already fulfilled!")
+                    }
                 }
             }
         }

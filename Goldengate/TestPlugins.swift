@@ -26,6 +26,7 @@ final class ReadLaterPlugin: Goldengate.Plugin {
     class func async() -> Promise {
         let d = Deferred()
         d.resolve("foo")
+        d.resolve("bar")
         d.reject("Error in this and that")
         return d.promise
     }
