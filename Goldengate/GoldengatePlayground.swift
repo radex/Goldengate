@@ -5,9 +5,33 @@ func play() {
     goldengate <- ("Foo", FooPlugin.self)
     goldengate <- ("ReadLater", ReadLaterPlugin.self)
     
-    println(goldengate.run("ReadLater", "noArgs", []))
+    // No arguments, no return value
     
-    switch goldengate.run("ReadLater", "async", [])! {
+    goldengate.run("ReadLater", "makeSomethingHappen", [])
+    
+    // Passing arguments
+    
+    goldengate.run("ReadLater", "saveUrl", ["http://foo.bar", "Lorem ipsum"])
+    
+    // Return value
+    
+    println(goldengate.run("ReadLater", "savedUrls", []))
+    
+    // Asynchronous call (resolved)
+    
+    catchPromiseValue(goldengate.run("ReadLater", "fetchSomething", [])!)
+    
+    // Asynchronous call (rejected)
+    
+    catchPromiseValue(goldengate.run("ReadLater", "asyncError", [])!)
+    
+    // ...
+    
+    scheduleTermination()
+}
+
+func catchPromiseValue(result: Goldengate.Plugin.Result) {
+    switch result {
     case .Promise(let promise):
         promise.onResolved = { value in
             println("Promise has resolved with value: \(value)")
@@ -15,8 +39,7 @@ func play() {
         promise.onRejected = { reason in
             println("Promise was rejected with reason: \(reason)")
         }
-    default: break
+    default:
+        println("Result is not a promise ಠ_ಠ")
     }
-    
-    scheduleTermination()
 }

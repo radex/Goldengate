@@ -1,3 +1,5 @@
+import Foundation
+
 final class FooPlugin: Goldengate.Plugin {
     override class func drawRoutes(routes: Router) {
     }
@@ -5,29 +7,46 @@ final class FooPlugin: Goldengate.Plugin {
 
 final class ReadLaterPlugin: Goldengate.Plugin {
     override class func drawRoutes(routes: Router) {
-        routes <- ("noArgs", noArgs)
-        routes <- ("someArgs", someArgs)
-        routes <- ("someResult", someResult)
-        routes <- ("async", async)
+        routes <- ("makeSomethingHappen", makeSomethingHappen)
+        routes <- ("saveUrl", saveUrl)
+        routes <- ("savedUrls", savedUrls)
+        routes <- ("fetchSomething", fetchSomething)
+        routes <- ("asyncError", asyncError)
     }
     
-    class func noArgs() {
+    class func makeSomethingHappen() {
+        println("Invoking some action that takes no arguments and returns no value")
+    }
+    
+    class func saveUrl(args: Arguments) {
+        let url = args[0] as String
+        let description = args[1] as String
         
+        println("Saving \(url) with description: \(description)")
     }
     
-    class func someArgs(args: Arguments) {
-        
+    class func savedUrls() -> AnyObject {
+        return [["url": "marco.coffee", "description": "Coffee is stupid"], ["url": "example.com", "description": "Blah blah blah"]]
     }
     
-    class func someResult() -> AnyObject {
-        return ["foo": "bar", "baz": 2]
-    }
-    
-    class func async() -> Promise {
+    class func fetchSomething() -> Promise {
         let d = Deferred()
-        d.resolve("foo")
-        d.resolve("bar")
-        d.reject("Error in this and that")
+
+        NSTimer.schedule(0.1) {
+            d.resolve("Fetched something!")
+        }
+        
+        return d.promise
+    }
+    
+    class func asyncError() -> Promise {
+        let d = Deferred()
+        
+        NSTimer.schedule(0.15) {
+            d.reject("Shit broke here and there")
+            d.reject("This won't come thru")
+        }
+        
         return d.promise
     }
 }
