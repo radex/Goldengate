@@ -24,10 +24,6 @@ func play() {
     // Asynchronous call (rejected)
     
     catchPromiseValue(goldengate.run("ReadLater", "asyncError", [])!)
-    
-    // ...
-    
-    scheduleTermination()
 }
 
 func catchPromiseValue(result: Goldengate.Plugin.Result) {
