@@ -12,6 +12,9 @@
 		6EFB478F1A1787DE00B5B512 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB478E1A1787DE00B5B512 /* Images.xcassets */; };
 		6EFB47921A1787DE00B5B512 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB47901A1787DE00B5B512 /* Main.storyboard */; };
 		6EFB479E1A1787DE00B5B512 /* GoldengateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB479D1A1787DE00B5B512 /* GoldengateTests.swift */; };
+		6EFB47AA1A178C6500B5B512 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47A71A178C6500B5B512 /* Plugin.swift */; };
+		6EFB47AB1A178C6500B5B512 /* Goldengate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47A81A178C6500B5B512 /* Goldengate.swift */; };
+		6EFB47AC1A178C6500B5B512 /* TestPlugins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB47A91A178C6500B5B512 /* TestPlugins.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		6EFB47971A1787DE00B5B512 /* GoldengateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoldengateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFB479C1A1787DE00B5B512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EFB479D1A1787DE00B5B512 /* GoldengateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldengateTests.swift; sourceTree = "<group>"; };
+		6EFB47A71A178C6500B5B512 /* Plugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
+		6EFB47A81A178C6500B5B512 /* Goldengate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goldengate.swift; sourceTree = "<group>"; };
+		6EFB47A91A178C6500B5B512 /* TestPlugins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlugins.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,9 @@
 		6EFB47871A1787DE00B5B512 /* Goldengate */ = {
 			isa = PBXGroup;
 			children = (
+				6EFB47A71A178C6500B5B512 /* Plugin.swift */,
+				6EFB47A81A178C6500B5B512 /* Goldengate.swift */,
+				6EFB47A91A178C6500B5B512 /* TestPlugins.swift */,
 				6EFB478A1A1787DE00B5B512 /* AppDelegate.swift */,
 				6EFB478C1A1787DE00B5B512 /* ViewController.swift */,
 				6EFB478E1A1787DE00B5B512 /* Images.xcassets */,
@@ -208,7 +217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EFB47AA1A178C6500B5B512 /* Plugin.swift in Sources */,
+				6EFB47AB1A178C6500B5B512 /* Goldengate.swift in Sources */,
 				6EFB478D1A1787DE00B5B512 /* ViewController.swift in Sources */,
+				6EFB47AC1A178C6500B5B512 /* TestPlugins.swift in Sources */,
 				6EFB478B1A1787DE00B5B512 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +409,7 @@
 				6EFB47A31A1787DE00B5B512 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6EFB47A41A1787DE00B5B512 /* Build configuration list for PBXNativeTarget "GoldengateTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +418,7 @@
 				6EFB47A61A1787DE00B5B512 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
