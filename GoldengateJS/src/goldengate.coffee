@@ -1,1 +1,2 @@
-alert 'test'
+$ ->
+	$('body').append("test!")
