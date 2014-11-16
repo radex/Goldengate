@@ -10,6 +10,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let goldengate = Goldengate()
+        goldengate <- ("Foo", FooPlugin.self)
+        goldengate <- ("ReadLater", ReadLaterPlugin.self)
+        
         let webView = goldengate.vc.webView
         
         webView.frame = contentView.bounds
@@ -17,30 +20,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         contentView.addSubview(webView)
         
         goldengate.vc.loadURL("http://goldengate.dev")
-        
-        play()
     }
 }
-
-class GoldengateMessageHandler: NSObject, WKScriptMessageHandler {
-    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-        let message = message.body as NSDictionary
-        let plugin = message["plugin"] as String
-        let method = message["method"] as String
-        let args = transformArguments(message["arguments"] as [AnyObject])
-        println(plugin)
-        println(method)
-        println(args)
-    }
-    
-    func transformArguments(args: [AnyObject]) -> [AnyObject?] {
-        return args.map { arg in
-            if arg is NSNull {
-                return nil
-            } else {
-                return arg
-            }
-        }
-    }
-}
-

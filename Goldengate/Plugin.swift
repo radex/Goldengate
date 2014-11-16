@@ -22,6 +22,13 @@ extension Goldengate {
                 case .Promise(_): return "Promise of a future value"
                 }
             }
+            
+            var promise: Plugin.Promise? {
+                switch self {
+                case .Promise(let promise): return promise
+                default: return nil
+                }
+            }
         }
         
         // MARK: Promises
