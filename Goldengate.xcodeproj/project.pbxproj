@@ -10,6 +10,7 @@
 		0C75B8021A17A61000C084FA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C75B8011A17A61000C084FA /* MainMenu.xib */; };
 		6E2DED711A17B8D900AA56F1 /* NSTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DED701A17B8D900AA56F1 /* NSTimer.swift */; };
 		6E2DED751A17C28900AA56F1 /* WKPreferences+private.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DED741A17C28900AA56F1 /* WKPreferences+private.m */; };
+		6E2DED771A18B2F500AA56F1 /* GoldengateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DED761A18B2F500AA56F1 /* GoldengateVC.swift */; };
 		6EFB478B1A1787DE00B5B512 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB478A1A1787DE00B5B512 /* AppDelegate.swift */; };
 		6EFB478D1A1787DE00B5B512 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB478C1A1787DE00B5B512 /* ViewController.swift */; };
 		6EFB478F1A1787DE00B5B512 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB478E1A1787DE00B5B512 /* Images.xcassets */; };
@@ -36,6 +37,7 @@
 		6E2DED721A17C28800AA56F1 /* Goldengate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Goldengate-Bridging-Header.h"; sourceTree = "<group>"; };
 		6E2DED731A17C28900AA56F1 /* WKPreferences+private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKPreferences+private.h"; sourceTree = "<group>"; };
 		6E2DED741A17C28900AA56F1 /* WKPreferences+private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKPreferences+private.m"; sourceTree = "<group>"; };
+		6E2DED761A18B2F500AA56F1 /* GoldengateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldengateVC.swift; sourceTree = "<group>"; };
 		6EFB47851A1787DE00B5B512 /* Goldengate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goldengate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFB47891A1787DE00B5B512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EFB478A1A1787DE00B5B512 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				6E2DED701A17B8D900AA56F1 /* NSTimer.swift */,
 				6EFB47A71A178C6500B5B512 /* Plugin.swift */,
 				6EFB47A81A178C6500B5B512 /* Goldengate.swift */,
+				6E2DED761A18B2F500AA56F1 /* GoldengateVC.swift */,
 				6EFB47A91A178C6500B5B512 /* TestPlugins.swift */,
 				6EFB478A1A1787DE00B5B512 /* AppDelegate.swift */,
 				6EFB478C1A1787DE00B5B512 /* ViewController.swift */,
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EFB47AF1A17AC0700B5B512 /* GoldengatePlayground.swift in Sources */,
+				6E2DED771A18B2F500AA56F1 /* GoldengateVC.swift in Sources */,
 				6EFB47AA1A178C6500B5B512 /* Plugin.swift in Sources */,
 				6EFB47AB1A178C6500B5B512 /* Goldengate.swift in Sources */,
 				6EFB478D1A1787DE00B5B512 /* ViewController.swift in Sources */,

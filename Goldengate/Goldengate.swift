@@ -1,4 +1,6 @@
 public class Goldengate {
+    // MARK: Routing
+    
     private var routes: [String: [String: Plugin.Route]] = [:]
     
     func run(plugin: String, _ method: String, _ arguments: Plugin.Arguments) -> Plugin.Result? {
@@ -7,6 +9,16 @@ public class Goldengate {
         } else {
             return nil
         }
+    }
+    
+    // MARK: Web view
+    
+    private(set) var vc: ViewController!
+    
+    // MARK: Initialization
+    
+    init() {
+         vc = ViewController(bridge: self)
     }
 }
 

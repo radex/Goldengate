@@ -7,24 +7,16 @@ import WebKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var contentView: NSView!
-    var webView: WKWebView!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let config = WKWebViewConfiguration()
-        let preferences = WKPreferences()
-        preferences.enableInspector()
-        config.preferences = preferences
+        let goldengate = Goldengate()
+        let webView = goldengate.vc.webView
         
-        let userContentController = WKUserContentController()
-        userContentController.addScriptMessageHandler(GoldengateMessageHandler(), name: "goldengate")
-        config.userContentController = userContentController
-        
-        webView = WKWebView(frame: contentView.bounds, configuration: config)
+        webView.frame = contentView.bounds
         webView.autoresizingMask = .ViewWidthSizable | .ViewHeightSizable
         contentView.addSubview(webView)
         
-        let request = NSURLRequest(URL: NSURL(string: "http://goldengate.dev")!)
-        webView.loadRequest(request)
+        goldengate.vc.loadURL("http://goldengate.dev")
         
         play()
     }
