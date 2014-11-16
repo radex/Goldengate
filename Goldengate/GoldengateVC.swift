@@ -57,10 +57,11 @@ extension Goldengate {
             let plugin = message["plugin"] as String
             let method = message["method"] as String
             let args = transformArguments(message["arguments"] as [AnyObject])
+            let callbackID = message["callbackID"] as Int
             
-            println("Received message to dispatch \(plugin).\(method)(\(args))")
+            println("Received message #\(callbackID) to dispatch \(plugin).\(method)(\(args))")
             
-            runAndPrintResult(plugin, method, args)
+            run(plugin, method, args, callbackID: callbackID)
         }
         
         func transformArguments(args: [AnyObject]) -> [AnyObject!] {
@@ -73,25 +74,32 @@ extension Goldengate {
             }
         }
         
-        func runAndPrintResult(plugin: String, _ method: String, _ args: [AnyObject!]) {
+        func run(plugin: String, _ method: String, _ args: [AnyObject!], callbackID: Int) {
             if let result = bridge.run(plugin, method, args) {
                 println(result)
                 
-                if let promise = result.promise {
-                    catchPromisedResult(promise)
+                switch result {
+                case .None: break
+                case .Value(let value):
+                    callBack(callbackID, success: true, reasonOrValue: value)
+                case .Promise(let promise):
+                    promise.onResolved = { value in
+                        self.callBack(callbackID, success: true, reasonOrValue: value)
+                        println("Promise has resolved with value: \(value)")
+                    }
+                    promise.onRejected = { reason in
+                        self.callBack(callbackID, success: false, reasonOrValue: reason)
+                        println("Promise was rejected with reason: \(reason)")
+                    }
                 }
             } else {
                 println("Error: No such plugin or method")
             }
         }
         
-        func catchPromisedResult(promise: Plugin.Promise) {
-            promise.onResolved = { value in
-                println("Promise has resolved with value: \(value)")
-            }
-            promise.onRejected = { reason in
-                println("Promise was rejected with reason: \(reason)")
-            }
+        private func callBack(callbackID: Int, success: Bool, reasonOrValue: AnyObject!) {
+            // we're wrapping reason/value in array, because NSJSONSerialization won't serialize scalar values. to be fixed.
+            bridge.vc.webView.evaluateJavaScript("Goldengate.callBack(\(callbackID), \(success), \(Goldengate.toJSON([reasonOrValue])))", completionHandler: nil)
         }
     }
 }

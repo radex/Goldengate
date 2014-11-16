@@ -20,6 +20,13 @@ public class Goldengate {
     init() {
          vc = ViewController(bridge: self)
     }
+    
+    // MARK: Helpers
+    
+    class func toJSON(json: AnyObject!) -> String {
+        let data = NSJSONSerialization.dataWithJSONObject(json, options: nil, error: nil)!
+        return NSString(data: data, encoding: NSUTF8StringEncoding)!
+    }
 }
 
 // Plugin routing operator
