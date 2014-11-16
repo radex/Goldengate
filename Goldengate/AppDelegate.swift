@@ -33,6 +33,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 class GoldengateMessageHandler: NSObject, WKScriptMessageHandler {
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         let message = message.body as NSDictionary
-        println(message)
+        let plugin = message["plugin"] as String
+        let method = message["method"] as String
+        let args = transformArguments(message["arguments"] as [AnyObject])
+        println(plugin)
+        println(method)
+        println(args)
+    }
+    
+    func transformArguments(args: [AnyObject]) -> [AnyObject?] {
+        return args.map { arg in
+            if arg is NSNull {
+                return nil
+            } else {
+                return arg
+            }
+        }
     }
 }
+
