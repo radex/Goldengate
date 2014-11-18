@@ -31,7 +31,7 @@ public class Goldengate {
 
 // Plugin routing operator
 
-func <- (bridge: Goldengate, args: (String, Goldengate.Plugin.Type)) {
+func <- (bridge: Goldengate, args: (String, Goldengate.Plugin)) {
     let router = Goldengate.Plugin.Router()
     args.1.drawRoutes(router)
     bridge.routes[args.0] = router.routes

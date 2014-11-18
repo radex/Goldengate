@@ -4,8 +4,6 @@ import Foundation
 
 extension Goldengate {
     public class Plugin {
-        private init() { }
-        
         // MARK: Input / output
         
         public typealias Arguments = [AnyObject!]
@@ -85,7 +83,7 @@ extension Goldengate {
             var routes: [String: Route] = [:]
         }
         
-        public class func drawRoutes(routes: Router) {
+        public func drawRoutes(routes: Router) {
             fatalError("Plugins must override drawRoutes method!")
         }
     }

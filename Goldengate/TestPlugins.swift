@@ -1,12 +1,7 @@
 import Foundation
 
-final class FooPlugin: Goldengate.Plugin {
-    override class func drawRoutes(routes: Router) {
-    }
-}
-
-final class ReadLaterPlugin: Goldengate.Plugin {
-    override class func drawRoutes(routes: Router) {
+class ReadLaterPlugin: Goldengate.Plugin {
+    override func drawRoutes(routes: Router) {
         routes <- ("makeSomethingHappen", makeSomethingHappen)
         routes <- ("saveUrl", saveUrl)
         routes <- ("savedUrls", savedUrls)
@@ -14,22 +9,22 @@ final class ReadLaterPlugin: Goldengate.Plugin {
         routes <- ("asyncError", asyncError)
     }
     
-    class func makeSomethingHappen() {
+    func makeSomethingHappen() {
         println("Invoking some action that takes no arguments and returns no value")
     }
     
-    class func saveUrl(args: Arguments) {
+    func saveUrl(args: Arguments) {
         let url = args[0] as String
         let description = args[1] as String
         
         println("Saving \(url) with description: \(description)")
     }
     
-    class func savedUrls() -> AnyObject {
+    func savedUrls() -> AnyObject {
         return [["url": "marco.coffee", "description": "Coffee is stupid"], ["url": "example.com", "description": "Blah blah blah"]]
     }
     
-    class func fetchSomething() -> Promise {
+    func fetchSomething() -> Promise {
         let d = Deferred()
 
         NSTimer.schedule(0.1) {
@@ -39,7 +34,7 @@ final class ReadLaterPlugin: Goldengate.Plugin {
         return d.promise
     }
     
-    class func asyncError() -> Promise {
+    func asyncError() -> Promise {
         let d = Deferred()
         
         NSTimer.schedule(0.15) {
