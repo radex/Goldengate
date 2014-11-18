@@ -81,52 +81,48 @@ extension Goldengate {
         
         public class Router {
             var routes: [String: Route] = [:]
+            
+            func add(name: String, _ method: Void -> Void) {
+                routes[name] = { _ in
+                    method()
+                    return .None
+                }
+            }
+
+            func add(name: String, _ method: Arguments -> Void) {
+                routes[name] = { args in
+                    method(args)
+                    return .None
+                }
+            }
+
+            func add(name: String, _ method: Void -> AnyObject?) {
+                routes[name] = { _ in
+                    return .Value(method())
+                }
+            }
+
+            func add(name: String, _ method: Arguments -> AnyObject?) {
+                routes[name] = { args in
+                    return .Value(method(args))
+                }
+            }
+
+            func add(name: String, _ method: Void -> Promise) {
+                routes[name] = { _ in
+                    return .Promise(method())
+                }
+            }
+
+            func add(name: String, _ method: Arguments -> Promise) {
+                routes[name] = { args in
+                    return .Promise(method(args))
+                }
+            }
         }
         
         public func drawRoutes(routes: Router) {
             fatalError("Plugins must override drawRoutes method!")
         }
-    }
-}
-
-// Method routing operator
-
-infix operator <- { associativity right precedence 90 }
-
-func <- (router: Goldengate.Plugin.Router, args: (String, (Void -> Void))) {
-    router.routes[args.0] = { _ in
-        args.1()
-        return .None
-    }
-}
-
-func <- (router: Goldengate.Plugin.Router, args: (String, (Goldengate.Plugin.Arguments -> Void))) {
-    router.routes[args.0] = { params in
-        args.1(params)
-        return .None
-    }
-}
-
-func <- (router: Goldengate.Plugin.Router, args: (String, (Void -> AnyObject?))) {
-    router.routes[args.0] = { _ in
-        return .Value(args.1())
-    }
-}
-
-func <- (router: Goldengate.Plugin.Router, args: (String, (Goldengate.Plugin.Arguments -> AnyObject?))) {
-    router.routes[args.0] = { params in
-        return .Value(args.1(params))
-    }
-}
-
-func <- (router: Goldengate.Plugin.Router, args: (String, (Void -> Goldengate.Plugin.Promise))) {
-    router.routes[args.0] = { _ in
-        return .Promise(args.1())
-    }
-}
-
-func <- (router: Goldengate.Plugin.Router, args: (String, (Goldengate.Plugin.Arguments -> Goldengate.Plugin.Promise))) {
-    router.routes[args.0] = { params in
-        return .Promise(args.1(params))
     }
 }

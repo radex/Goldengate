@@ -11,6 +11,12 @@ public class Goldengate {
         }
     }
     
+    func addPlugin(name: String, _ plugin: Plugin) {
+        let router = Plugin.Router()
+        plugin.drawRoutes(router)
+        routes[name] = router.routes
+    }
+    
     // MARK: Web view
     
     private(set) var vc: ViewController!
@@ -27,12 +33,4 @@ public class Goldengate {
         let data = NSJSONSerialization.dataWithJSONObject(json, options: nil, error: nil)!
         return NSString(data: data, encoding: NSUTF8StringEncoding)!
     }
-}
-
-// Plugin routing operator
-
-func <- (bridge: Goldengate, args: (String, Goldengate.Plugin)) {
-    let router = Goldengate.Plugin.Router()
-    args.1.drawRoutes(router)
-    bridge.routes[args.0] = router.routes
 }

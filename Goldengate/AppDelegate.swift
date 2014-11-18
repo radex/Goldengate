@@ -10,7 +10,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let goldengate = Goldengate()
-        goldengate <- ("ReadLater", ReadLaterPlugin())
+        goldengate.addPlugin("ReadLater", ReadLaterPlugin())
         
         let webView = goldengate.vc.webView
         

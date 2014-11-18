@@ -2,11 +2,11 @@ import Foundation
 
 class ReadLaterPlugin: Goldengate.Plugin {
     override func drawRoutes(routes: Router) {
-        routes <- ("makeSomethingHappen", makeSomethingHappen)
-        routes <- ("saveUrl", saveUrl)
-        routes <- ("savedUrls", savedUrls)
-        routes <- ("fetchSomething", fetchSomething)
-        routes <- ("asyncError", asyncError)
+        routes.add("makeSomethingHappen", makeSomethingHappen)
+        routes.add("saveUrl", saveUrl)
+        routes.add("savedUrls", savedUrls)
+        routes.add("fetchSomething", fetchSomething)
+        routes.add("asyncError", asyncError)
     }
     
     func makeSomethingHappen() {
