@@ -14,7 +14,9 @@ Goldengate intends to be a replacement for Cordova/PhoneGap on iOS and Mac. Why?
 
 ## Issues
 
-At the moment, Goldengate is (and can be) only a proof of concept, because WKWebView can't load web pages from the app bundle. This has been fixed on the upstream repo, but it's possible that the necessary API won't be added until OS X 10.11 / iOS 9.
+At the moment, Goldengate is (and can be) only a proof of concept, because WKWebView can't load web pages from the app bundle. This [has been fixed on the upstream repo](http://trac.webkit.org/changeset/174029/trunk/Source/WebKit2/UIProcess/API/Cocoa/WKWebView.h), but it's possible that the necessary API won't be added until OS X 10.11 / iOS 9.
+
+Idea to try: according to [this tweet](https://twitter.com/wkwebview/status/540914015934107648), WKWebView can load local files from /tmp. Can we try making a tmp directory at launch and copying the needed files there?
 
 ## Dependencies/setup
 
