@@ -1,14 +1,6 @@
 import Foundation
 
 class ReadLaterPlugin: Goldengate.Plugin {
-    override func drawRoutes(routes: Router) {
-        routes.add("makeSomethingHappen", makeSomethingHappen)
-        routes.add("saveUrl", saveUrl)
-        routes.add("savedUrls", savedUrls)
-        routes.add("fetchSomething", fetchSomething)
-        routes.add("asyncError", asyncError)
-    }
-    
     func makeSomethingHappen() {
         println("Invoking some action that takes no arguments and returns no value")
     }

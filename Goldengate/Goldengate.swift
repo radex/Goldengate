@@ -1,7 +1,7 @@
 public class Goldengate {
     // MARK: Routing
     
-    private var routes: [String: [String: Plugin.Route]] = [:]
+    var routes: [String: [String: Plugin.Action]] = [:]
     
     func run(plugin: String, _ method: String, _ arguments: Plugin.Arguments) -> Plugin.Result? {
         if let result = routes[plugin]?[method]?(arguments) {

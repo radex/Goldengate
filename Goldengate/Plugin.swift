@@ -3,10 +3,10 @@ import Foundation
 // Arguments and results
 
 extension Goldengate {
-    public class Plugin {
+    public class Plugin: NSObject {
         // MARK: Input / output
         
-        public typealias Arguments = [AnyObject!]
+        public typealias Arguments = NSArray
         
         enum Result: Printable {
             case None
@@ -31,7 +31,7 @@ extension Goldengate {
         
         // MARK: Promises
         
-        public class Promise {
+        @objc public class Promise {
             private init() {}
             
             enum State {
@@ -77,52 +77,68 @@ extension Goldengate {
         
         // MARK: Routing
         
-        typealias Route = Arguments -> Result
+        typealias Action = Arguments -> Result
         
         public class Router {
-            var routes: [String: Route] = [:]
-            
-            func add(name: String, _ method: Void -> Void) {
-                routes[name] = { _ in
-                    method()
+            var routes: [String: Action] = [:]
+        }
+        
+        public func drawRoutes(router: Router) {
+            for details in getMethods().map(methodDetails).filter({$0.selector != "init"}) {
+                let name = nameForSelector(details.selector)
+                let action = actionFor(details)
+                router.routes[name] = action
+            }
+        }
+        
+        private func actionFor(#selector: Selector, hasArgs: Bool, returns: Bool) -> Action {
+            return { args in
+                let args: NSArray? = (hasArgs ? args : nil)
+                
+                if returns {
+                    let returnValue: AnyObject! = self.swift_performSelector(selector, withObject: args)
+                    
+                    if let promise = returnValue as? Promise {
+                        return .Promise(promise)
+                    } else {
+                        return .Value(returnValue)
+                    }
+                } else {
+                    self.swift_performSelectorNoReturn(selector, withObject: args)
                     return .None
-                }
-            }
-
-            func add(name: String, _ method: Arguments -> Void) {
-                routes[name] = { args in
-                    method(args)
-                    return .None
-                }
-            }
-
-            func add(name: String, _ method: Void -> AnyObject?) {
-                routes[name] = { _ in
-                    return .Value(method())
-                }
-            }
-
-            func add(name: String, _ method: Arguments -> AnyObject?) {
-                routes[name] = { args in
-                    return .Value(method(args))
-                }
-            }
-
-            func add(name: String, _ method: Void -> Promise) {
-                routes[name] = { _ in
-                    return .Promise(method())
-                }
-            }
-
-            func add(name: String, _ method: Arguments -> Promise) {
-                routes[name] = { args in
-                    return .Promise(method(args))
                 }
             }
         }
         
-        public func drawRoutes(routes: Router) {
-            fatalError("Plugins must override drawRoutes method!")
+        private func nameForSelector(selector: Selector) -> String {
+            let string: NSString = selector.description
+            if string.hasSuffix(":") {
+               return string.substringToIndex(string.length - 1)
+            } else {
+                return string
+            }
+        }
+        
+        private func methodDetails(method: Method) -> (selector: Selector, hasArgs: Bool, returns: Bool) {
+            // TODO: refactor to warn about invalid methods
+            let selector = method_getName(method)
+            let takesArguments = (method_getNumberOfArguments(method) == 3)
+            let returnTypeEncoding = String(CString: method_copyReturnType(method), encoding: NSUTF8StringEncoding)!
+            let returnsObject = (returnTypeEncoding == "@")
+            return (selector, takesArguments, returnsObject)
+        }
+        
+        func getMethods() -> [Method] {
+            var count: UInt32 = 0
+            let methodsPtr = class_copyMethodList(self.dynamicType, &count)
+            var methods: [Method] = []
+            
+            for i in (0..<count) {
+                methods.append(methodsPtr[Int(i)])
+            }
+            
+            free(methodsPtr)
+            return methods
         }
     }
 }
