@@ -4,7 +4,7 @@ public class Goldengate {
     var plugins: [String: Plugin] = [:]
     
     func run(plugin: String, _ method: String, _ arguments: Plugin.Arguments) -> Plugin.Result? {
-        if let result = plugins[plugin]?.routes[method]?(arguments) {
+        if let result = plugins[plugin]?.routes[method]?.run(arguments) {
             return result
         } else {
             return nil

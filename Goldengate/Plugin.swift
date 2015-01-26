@@ -80,25 +80,26 @@ extension Goldengate {
             }
         }
         
-        // MARK: Routing
+        // MARK: Actions
         
-        typealias Action = Arguments -> Result
-        var routes: [String: Action] = [:]
-        
-        public func drawRoutes() {
-            for details in getMethods().map(methodDetails).filter({$0.selector != "init"}) {
-                let name = nameForSelector(details.selector)
-                let action = actionFor(details)
-                routes[name] = action
+        class Action {
+            let plugin: Plugin
+            let selector: Selector
+            let hasArgs: Bool
+            let returns: Bool
+            
+            init(plugin: Plugin, details: (selector: Selector, hasArgs: Bool, returns: Bool)) {
+                self.plugin   = plugin
+                self.selector = details.selector
+                self.hasArgs  = details.hasArgs
+                self.returns  = details.returns
             }
-        }
-        
-        private func actionFor(#selector: Selector, hasArgs: Bool, returns: Bool) -> Action {
-            return { args in
+            
+            func run(args: Arguments) -> Result {
                 let args: NSArray? = (hasArgs ? args : nil)
                 
                 if returns {
-                    let returnValue: AnyObject! = self.swift_performSelector(selector, withObject: args)
+                    let returnValue: AnyObject! = plugin.swift_performSelector(selector, withObject: args)
                     
                     if let promise = returnValue as? Promise {
                         return .Promise(promise)
@@ -106,9 +107,20 @@ extension Goldengate {
                         return .Value(returnValue)
                     }
                 } else {
-                    self.swift_performSelectorNoReturn(selector, withObject: args)
+                    plugin.swift_performSelectorNoReturn(selector, withObject: args)
                     return .None
                 }
+            }
+        }
+        
+        // MARK: Routing
+        
+        var routes: [String: Action] = [:]
+        
+        public func drawRoutes() {
+            for details in getMethods().map(methodDetails).filter({$0.selector != "init"}) {
+                let name = nameForSelector(details.selector)
+                routes[name] = Action(plugin: self, details: details)
             }
         }
         
