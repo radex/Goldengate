@@ -4,6 +4,11 @@ import Foundation
 
 extension Goldengate {
     public class Plugin: NSObject {
+        override init() {
+            super.init()
+            drawRoutes()
+        }
+        
         // MARK: Input / output
         
         public typealias Arguments = NSArray
@@ -78,16 +83,13 @@ extension Goldengate {
         // MARK: Routing
         
         typealias Action = Arguments -> Result
+        var routes: [String: Action] = [:]
         
-        public class Router {
-            var routes: [String: Action] = [:]
-        }
-        
-        public func drawRoutes(router: Router) {
+        public func drawRoutes() {
             for details in getMethods().map(methodDetails).filter({$0.selector != "init"}) {
                 let name = nameForSelector(details.selector)
                 let action = actionFor(details)
-                router.routes[name] = action
+                routes[name] = action
             }
         }
         

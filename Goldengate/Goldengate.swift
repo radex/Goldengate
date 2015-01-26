@@ -1,10 +1,10 @@
 public class Goldengate {
     // MARK: Routing
     
-    var routes: [String: [String: Plugin.Action]] = [:]
+    var plugins: [String: Plugin] = [:]
     
     func run(plugin: String, _ method: String, _ arguments: Plugin.Arguments) -> Plugin.Result? {
-        if let result = routes[plugin]?[method]?(arguments) {
+        if let result = plugins[plugin]?.routes[method]?(arguments) {
             return result
         } else {
             return nil
@@ -12,9 +12,11 @@ public class Goldengate {
     }
     
     func addPlugin(name: String, _ plugin: Plugin) {
-        let router = Plugin.Router()
-        plugin.drawRoutes(router)
-        routes[name] = router.routes
+        plugins[name] = plugin
+    }
+    
+    func addPlugin(plugin: Plugin) {
+        
     }
     
     // MARK: Web view
