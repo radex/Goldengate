@@ -37,3 +37,7 @@ class ReadLaterPlugin: Goldengate.Plugin {
         return d.promise
     }
 }
+
+class OtherPlugin: Goldengate.Plugin {
+    func someRandomAction() { }
+}

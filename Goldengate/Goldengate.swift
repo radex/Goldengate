@@ -16,7 +16,23 @@ public class Goldengate {
     }
     
     func addPlugin(plugin: Plugin) {
+        // get class name (ignore module name)
+        let classNameComponents = plugin.className.componentsSeparatedByString(".")
+        var name: NSString = classNameComponents[1]
         
+        // remove "Plugin"
+        if name.hasSuffix("Plugin") {
+            name = name.substringToIndex(name.length - 6)
+        }
+        
+        // add
+        addPlugin(name, plugin)
+    }
+    
+    func addPlugins(plugins: Plugin...) {
+        for p in plugins {
+            addPlugin(p)
+        }
     }
     
     // MARK: Web view
