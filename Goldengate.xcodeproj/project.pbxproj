@@ -22,6 +22,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6EB4505E1AD0826A00629635 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6EB450591AD0826A00629635 /* Taylor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E1D6FABB1AB5E91700399154;
+			remoteInfo = Taylor;
+		};
+		6EB450601AD0826A00629635 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6EB450591AD0826A00629635 /* Taylor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E1D6FAC61AB5E91700399154;
+			remoteInfo = TaylorTests;
+		};
+		6EB450621AD0827800629635 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6EB450591AD0826A00629635 /* Taylor.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E1D6FABA1AB5E91700399154;
+			remoteInfo = Taylor;
+		};
 		6EFB47981A1787DE00B5B512 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6EFB477D1A1787DE00B5B512 /* Project object */;
@@ -40,6 +61,7 @@
 		6E2DED761A18B2F500AA56F1 /* GoldengateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldengateVC.swift; sourceTree = "<group>"; };
 		6E3F31F31A756EA000B8D1C5 /* NSObject+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Swift.h"; sourceTree = "<group>"; };
 		6E3F31F41A756EA000B8D1C5 /* NSObject+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Swift.m"; sourceTree = "<group>"; };
+		6EB450591AD0826A00629635 /* Taylor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Taylor.xcodeproj; path = taylor/Taylor.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6EFB47851A1787DE00B5B512 /* Goldengate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goldengate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFB47891A1787DE00B5B512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EFB478A1A1787DE00B5B512 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6EB4505A1AD0826A00629635 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6EB4505F1AD0826A00629635 /* Taylor.framework */,
+				6EB450611AD0826A00629635 /* TaylorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6EFB477C1A1787DE00B5B512 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +138,7 @@
 				6E2DED721A17C28800AA56F1 /* Goldengate-Bridging-Header.h */,
 				6E3F31F31A756EA000B8D1C5 /* NSObject+Swift.h */,
 				6E3F31F41A756EA000B8D1C5 /* NSObject+Swift.m */,
+				6EB450591AD0826A00629635 /* Taylor.xcodeproj */,
 			);
 			path = Goldengate;
 			sourceTree = "<group>";
@@ -150,6 +182,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6EB450631AD0827800629635 /* PBXTargetDependency */,
 			);
 			name = Goldengate;
 			productName = Goldengate;
@@ -203,6 +236,12 @@
 			mainGroup = 6EFB477C1A1787DE00B5B512;
 			productRefGroup = 6EFB47861A1787DE00B5B512 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6EB4505A1AD0826A00629635 /* Products */;
+					ProjectRef = 6EB450591AD0826A00629635 /* Taylor.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6EFB47841A1787DE00B5B512 /* Goldengate */,
@@ -210,6 +249,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6EB4505F1AD0826A00629635 /* Taylor.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Taylor.framework;
+			remoteRef = 6EB4505E1AD0826A00629635 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6EB450611AD0826A00629635 /* TaylorTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TaylorTests.xctest;
+			remoteRef = 6EB450601AD0826A00629635 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6EFB47831A1787DE00B5B512 /* Resources */ = {
@@ -258,6 +314,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6EB450631AD0827800629635 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Taylor;
+			targetProxy = 6EB450621AD0827800629635 /* PBXContainerItemProxy */;
+		};
 		6EFB47991A1787DE00B5B512 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6EFB47841A1787DE00B5B512 /* Goldengate */;
