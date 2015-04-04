@@ -6,8 +6,8 @@ class ReadLaterPlugin: Goldengate.Plugin {
     }
     
     func saveUrl(args: Arguments) {
-        let url = args[0] as String
-        let description = args[1] as String
+        let url = args[0] as! String
+        let description = args[1] as! String
         
         println("Saving \(url) with description: \(description)")
     }

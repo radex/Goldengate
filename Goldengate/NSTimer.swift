@@ -28,13 +28,13 @@ extension NSTimer {
     }
     
     class func schedule(intervalFromNow: NSTimeInterval, block: Block) -> NSTimer {
-        let timer = NSTimer.make(intervalFromNow, block)
+        let timer = NSTimer.make(intervalFromNow, block: block)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
         return timer
     }
     
     class func schedule(every interval: NSTimeInterval, block: Block) -> NSTimer {
-        let timer = NSTimer.make(every: interval, block)
+        let timer = NSTimer.make(every: interval, block: block)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
         return timer
     }

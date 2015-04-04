@@ -26,7 +26,7 @@ public class Goldengate {
         }
         
         // add
-        addPlugin(name, plugin)
+        addPlugin(name as String, plugin)
     }
     
     func addPlugins(plugins: Plugin...) {
@@ -49,6 +49,6 @@ public class Goldengate {
     
     class func toJSON(json: AnyObject!) -> String {
         let data = NSJSONSerialization.dataWithJSONObject(json, options: nil, error: nil)!
-        return NSString(data: data, encoding: NSUTF8StringEncoding)!
+        return NSString(data: data, encoding: NSUTF8StringEncoding)! as String
     }
 }
