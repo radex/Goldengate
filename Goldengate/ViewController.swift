@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Radosław Pietruszewski. All rights reserved.
 //
 
-import Cocoa
-
 class ViewController: NSViewController {
 
     override func viewDidLoad() {
