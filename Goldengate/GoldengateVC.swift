@@ -14,7 +14,7 @@ extension Goldengate {
         // MARK: Web view
         
         public var webView: WKWebView! {
-            return view as WKWebView
+            return view as! WKWebView
         }
         
         public var configuration = WKWebViewConfiguration()
@@ -53,11 +53,11 @@ extension Goldengate {
         // MARK: Receiving messages
         
         func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-            let message = message.body as NSDictionary
-            let plugin = message["plugin"] as String
-            let method = message["method"] as String
-            let args = transformArguments(message["arguments"] as [AnyObject])
-            let callbackID = message["callbackID"] as Int
+            let message = message.body as! NSDictionary
+            let plugin = message["plugin"] as! String
+            let method = message["method"] as! String
+            let args = transformArguments(message["arguments"] as! [AnyObject])
+            let callbackID = message["callbackID"] as! Int
             
             println("Received message #\(callbackID) to dispatch \(plugin).\(method)(\(args))")
             

@@ -129,7 +129,7 @@ extension Goldengate {
             if string.hasSuffix(":") {
                return string.substringToIndex(string.length - 1)
             } else {
-                return string
+                return string as String
             }
         }
         
